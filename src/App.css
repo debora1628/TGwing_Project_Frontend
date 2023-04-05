@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+#kakao {
+  width : 25px;
+  height : 25px;
+  cursor : pointer;
+  padding : 5px;
+  object-fit: cover;
+}

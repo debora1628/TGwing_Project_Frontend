@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
+import React from "react";
 
 const Box = styled.div`
     width: 800px;
