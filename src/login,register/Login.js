@@ -54,7 +54,7 @@ function Login() {
                     </NavLink>
                 </Button1>
 
-                <Button2 onClick={onClick}>카카오톡으로 회원가입하기</Button2>
+                <Button2 onClick={onClick}>회원가입하기</Button2>
             </Buttonbox>
 
     )
