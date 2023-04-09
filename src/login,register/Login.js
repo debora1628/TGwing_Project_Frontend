@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useNavigate, NavLink } from "react-router-dom";
 import React from "react";
-import {KAKAO_AUTH_URL} from "./OAuth";
+import {KAKAO_AUTH_URL} from "./oauth/OAuth";
 import kakaologo from ".//kakaotalk.png";
 import "../App.css";
 
