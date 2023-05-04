@@ -52,7 +52,9 @@ function Register() {
         setName(String(nameRef.current.value));
         
     };
-    
+    const NavigateToMainPage = () => {
+        navigate("/MainPage")
+    }
 
     //아이디중복확인//
     /*
@@ -98,7 +100,7 @@ function Register() {
                 placeholder="닉네임"
             ></input>
  
-            <RegiButton>회원가입</RegiButton>
+            <RegiButton onClick={NavigateToMainPage}>회원가입</RegiButton>
         </Box>
     )
 }
