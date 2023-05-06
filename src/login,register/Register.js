@@ -1,56 +1,106 @@
 import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Box = styled.div`
-    width: 800px;
+    width: 500px;
     height : 600px;
-    box-shadow: 0 2px 5px 0 #bcbcbc;
-    border-radius : 10px;
+    box-shadow: 0 2px 10px 0 #bcbcbc;
+    border-radius : 20px;
     padding : 30px;
     margin: 100px auto;
 `
 const RegiButton = styled.div`
     width : 200px;
-    height : 50px;
-    border-radius : 10px;
-    border: 1px solid black;
+    height : 40px;
+    box-shadow: 0 1px 0 0  #bdbdbd;
+    border: none;
     cursor: pointer;
     margin : 300px auto;
+    align-items: center;
+    text-align : center;
+    vertical-align : middle;
+    font-size: 20px;
+`
+const Idinput = styled.div`
+    width: 300px;
+    height : auto;
+    border : 1px solid black;
 `
 
 function Register() {
+    const navigate = useNavigate();
+
+    const [ID, setID] = useState(null);
+    const [PW, setPW] = useState(null);
     const [name, setName] = useState(null);
-    const [address, setAddress] = useState(null);
-
+    
+    const IDRef = useRef(null);
+    const PWRef = useRef(null);
     const nameRef = useRef(null);
-    const addRef = useRef(null);
-
-    const nameChange = () => {
-        setName(String(name.current.value));
+   
+    const IDChange = () => {
+        setID(String(IDRef.current.value));
         
     };
-    const addChange = () => {
-        setAddress(String(address.current.value));
+    const PWChange = () => {
+        setPW(String(PWRef.current.value));
+        
     };
+    const nameChange = () => {
+        setName(String(nameRef.current.value));
+        
+    };
+    const NavigateToMainPage = () => {
+        navigate("/MainPage")
+    }
 
-    //닉네임중복확인//
+    //아이디중복확인//
+    /*
+    const users = 
+    const [canID, setCanID] = useState(null);
+
+    const IDCheck = () => {
+        if (id !== null) {
+        
+    };
+    */
+
+    // const Register = () => {
+    //     if (
+    //         canID &&
+    //         PW.length >= 8 &&
+    //         name
+    //     )
+    //     {
+    //         fetch(?)
+    //     }
+    //
+    // }
 
     return(
         <Box>
-                <p>이름</p>
-                <p>휴대폰</p>
-                <p>닉네임</p>
-                <input
-                    ref={nameRef}
-                    onChange={nameChange}
-                    placeholder="닉네임"
-                />
-                <p>주소</p>
-                
-                <p>프로필 사진 추가</p>
+            <p>아이디</p>
+            <input
+                ref={IDRef}
+                onChange={IDChange}
+                placeholder="아이디"
+            ></input>
+            <p>비밀번호</p>
+            <input
+                ref={PWRef}
+                onChange={PWChange}
+                placeholder="패스워드"
+            ></input>
+            <p>닉네임</p>
+            <input
+                ref={nameRef}
+                onChange={nameChange}
+                placeholder="닉네임"
+            ></input>
  
-            <RegiButton>회원가입</RegiButton>
+            <RegiButton onClick={NavigateToMainPage}>회원가입</RegiButton>
         </Box>
     )
 }
