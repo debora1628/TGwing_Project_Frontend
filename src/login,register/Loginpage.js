@@ -10,8 +10,10 @@ const Box = styled.div`
     border-radius : 20px;
     padding : 30px;
     margin: 100px auto;
+    text-align: center;
+    position: relative;
 `
-const RegiButton = styled.div`
+const LoginButton = styled.div`
     width : 200px;
     height : 40px;
     box-shadow: 0 1px 0 0  #bdbdbd;
@@ -22,23 +24,17 @@ const RegiButton = styled.div`
     text-align : center;
     vertical-align : middle;
     font-size: 20px;
-`
-const Idinput = styled.div`
-    width: 300px;
-    height : auto;
-    border : 1px solid black;
+
 `
 
-function Register() {
+function Loginpage() {
     const navigate = useNavigate();
 
     const [ID, setID] = useState(null);
     const [PW, setPW] = useState(null);
-    const [name, setName] = useState(null);
     
     const IDRef = useRef(null);
     const PWRef = useRef(null);
-    const nameRef = useRef(null);
    
     const IDChange = () => {
         setID(String(IDRef.current.value));
@@ -48,36 +44,9 @@ function Register() {
         setPW(String(PWRef.current.value));
         
     };
-    const nameChange = () => {
-        setName(String(nameRef.current.value));
-        
+    const NavigateToMainPage = () => {
+        navigate(`/Mainpage`)
     };
-    const NavigateToStartPage = () => {
-        navigate(`/`)
-    }
-
-    //아이디중복확인//
-    /*
-    const users = 
-    const [canID, setCanID] = useState(null);
-
-    const IDCheck = () => {
-        if (id !== null) {
-        
-    };
-    */
-
-    // const Register = () => {
-    //     if (
-    //         canID &&
-    //         PW.length >= 8 &&
-    //         name
-    //     )
-    //     {
-    //         fetch(?)
-    //     }
-    //
-    // }
 
     return(
         <Box>
@@ -93,16 +62,10 @@ function Register() {
                 onChange={PWChange}
                 placeholder="패스워드"
             ></input>
-            <p>닉네임</p>
-            <input
-                ref={nameRef}
-                onChange={nameChange}
-                placeholder="닉네임"
-            ></input>
- 
-            <RegiButton onClick={NavigateToStartPage}>회원가입</RegiButton>
+
+            <LoginButton onClick={NavigateToMainPage}>로그인</LoginButton>
         </Box>
     )
 }
 
-export default Register;
+export default Loginpage;

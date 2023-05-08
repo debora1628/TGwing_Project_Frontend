@@ -7,6 +7,10 @@ const StyledButton = styled.button`
     border-width: 1px;
     border-radius: 8px;
     cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    height : 100%;
+    position: static;
 `;
 
 
