@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {getAccessToken, setAccessToken, getRefreshToken, setRefreshToken} from "../components/token/tokenstorage";
 
 const Box = styled.div`
     width: 500px;
@@ -48,6 +49,25 @@ function Loginpage() {
         navigate(`/Mainpage`)
     };
 
+    const url = "http://localhost:3000/user/login";
+    const data = {
+        'user_id' : IDRef,
+        'user_password' : PWRef
+    }
+    const config = {"Content-Type" : 'application/json'};
+
+    const UserCheck = () => {
+        postMessage(url, data, config)
+            .then(res => {
+                console.log(res.message)
+                setAccessToken(res.accessToken)
+                console.log(getAccessToken)
+                setRefreshToken(res.refreshToken)
+                console.log(getRefreshToken)
+                navigate(`/mainpage`)
+            }).catch(err => console.log(err.message))
+    }
+
     return(
         <Box>
             <p>아이디</p>
@@ -63,7 +83,7 @@ function Loginpage() {
                 placeholder="패스워드"
             ></input>
 
-            <LoginButton onClick={NavigateToMainPage}>로그인</LoginButton>
+            <LoginButton onClick={UserCheck}>로그인</LoginButton>
         </Box>
     )
 }
