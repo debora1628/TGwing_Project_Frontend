@@ -9,9 +9,8 @@ function getAccessToken() {
     )
 }
 function setAccessToken(string) {
-    return(
-        AccessToken = string
-    )
+    AccessToken = string
+    console.log(AccessToken)
 }
 function getRefreshToken() {
     return(
@@ -19,9 +18,8 @@ function getRefreshToken() {
     )
 }
 function setRefreshToken(string) {
-    return(
-        RefreshToken = string
-    )
+    RefreshToken = string
+    console.log(RefreshToken)
 }
 
 export {getAccessToken, setAccessToken, getRefreshToken, setRefreshToken};

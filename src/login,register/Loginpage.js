@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import {getAccessToken, setAccessToken, getRefreshToken, setRefreshToken} from "../components/token/tokenstorage";
-
+import { setAccessToken, setRefreshToken} from "../components/token/tokenstorage";
+import axios from "axios";
 const Box = styled.div`
     width: 500px;
     height : 600px;
@@ -36,7 +36,7 @@ function Loginpage() {
     
     const IDRef = useRef(null);
     const PWRef = useRef(null);
-   
+
     const IDChange = () => {
         setID(String(IDRef.current.value));
         
@@ -49,21 +49,21 @@ function Loginpage() {
         navigate(`/Mainpage`)
     };
 
-    const url = "http://localhost:3000/user/login";
+    const url = "http://59.18.221.32:8000/user/login";
     const data = {
-        'user_id' : IDRef,
-        'user_password' : PWRef
+        'user_id' : ID,
+        'user_password' : PW
     }
     const config = {"Content-Type" : 'application/json'};
 
     const UserCheck = () => {
-        postMessage(url, data, config)
+        var data2 = {...data}
+        console.log(ID)
+        console.log(PW)
+        axios.post(url, data2, config)
             .then(res => {
-                console.log(res.message)
-                setAccessToken(res.accessToken)
-                console.log(getAccessToken)
-                setRefreshToken(res.refreshToken)
-                console.log(getRefreshToken)
+                setAccessToken(res.data.accessToken)
+                setRefreshToken(res.data.refreshToken)
                 navigate(`/mainpage`)
             }).catch(err => console.log(err.message))
     }
